@@ -69,7 +69,7 @@ view model =
     , body =
         [ nav [ class "navbar" ]
             [ div [ class "gcsse-logo" ]
-                [ text "GCSSEditor" ]
+                [ img [ src "assets/img/gcsse.svg", class "gcsse-logo-img" ] [] ]
             , div [ class "project-name" ]
                 [ input [ placeholder "Project Name", value "Untitled Project" ] []
                 ]
