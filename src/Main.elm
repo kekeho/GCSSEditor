@@ -9,6 +9,7 @@ import Html exposing (..)
 import Browser
 import Browser.Navigation as Nav
 import Url
+import Html.Attributes exposing (..)
 
 
 main : Program () RootModel Msg
@@ -66,7 +67,20 @@ view : RootModel -> Browser.Document Msg
 view model =
     { title = "GCSSEditor"
     , body =
-        [ div []
-            [ text "GCSSEditor" ]
-      ]
+        [ nav [ class "navbar" ]
+            [ div [ class "gcsse-logo" ]
+                [ text "GCSSEditor" ]
+            , div [ class "project-name" ]
+                [ input [ placeholder "Project Name", value "Untitled Project" ] []
+                ]
+            ]
+
+        , div [ class "left-sidepanel" ]
+            [ div [ class "mode" ] [ text "Notes" ]
+            , div [ class "mode" ] [ text "Target Settings" ]
+            , div [ class "mode" ] [ text "Animation Settings" ]
+            , div [ class "mode" ] [ text "Other Settings" ]
+            , div [ class "mode" ] [ text "Raw" ]
+            ]
+        ]
     }

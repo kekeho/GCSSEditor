@@ -10630,16 +10630,106 @@ var $author$project$Main$update = F2(
 				$elm$core$Platform$Cmd$none);
 		}
 	});
+var $elm$html$Html$nav = _VirtualDom_node('nav');
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
 				A2(
-				$elm$html$Html$div,
-				_List_Nil,
+				$elm$html$Html$nav,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('GCSSEditor')
+						$elm$html$Html$Attributes$class('navbar')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('gcsse-logo')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('GCSSEditor')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('project-name')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$placeholder('Project Name'),
+										$elm$html$Html$Attributes$value('Untitled Project')
+									]),
+								_List_Nil)
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('left-sidepanel')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('mode')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Notes')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('mode')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Target Settings')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('mode')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Animation Settings')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('mode')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Other Settings')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('mode')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Raw')
+							]))
 					]))
 			]),
 		title: 'GCSSEditor'
