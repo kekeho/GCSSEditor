@@ -1,0 +1,27 @@
+/**
+ * Copyright (c) 2020 Hiroki Takemura (kekeho)
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+
+/* Left Sidepanel */
+
+.left-sidepanel {
+    background-color: rgb(71, 71, 71);
+    width: 6rem;
+}
+
+.left-sidepanel .mode {
+    height: 6rem;
+    border-bottom: solid 2px #757575;
+
+    color: white;
+
+    font-weight: 500;
+    font-size: 1.2rem;
+
+    vertical-align: middle;
+    align: center;
+}
