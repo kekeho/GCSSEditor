@@ -10,6 +10,9 @@ import Browser
 import Browser.Navigation as Nav
 import Url
 import Html.Attributes exposing (..)
+import Model exposing (..)
+import Raw.RawModel exposing (RawModel, initRawModel)
+import Html.Events exposing (onClick)
 
 
 main : Program () RootModel Msg
@@ -24,21 +27,17 @@ main =
     }
 
 
-type alias RootModel =
-    { key : Nav.Key
-    , url : Url.Url
-    }
-
 
 init : () -> Url.Url -> Nav.Key -> (RootModel, Cmd Msg)
 init _ url key =
-    (RootModel key url
+    (initModel url key
     , Cmd.none)
 
 
 type Msg
     = UrlRequested Browser.UrlRequest
     | UrlChanged Url.Url
+    | ChangeRoute Route
 
 
 update : Msg -> RootModel -> (RootModel, Cmd Msg)
@@ -54,6 +53,11 @@ update msg model =
 
         UrlChanged url ->
             ( { model | url = url }
+            , Cmd.none
+            )
+        
+        ChangeRoute route ->
+            ( { model | route = route }
             , Cmd.none
             )
 
@@ -77,31 +81,30 @@ view model =
 
         , div [ class "app" ]
             [ div [ class "left-sidepanel" ]
-                [ div [ class "mode" ]
-                    [ img [ src "assets/img/notes.svg" ] []
-                    , text "Notes"
+                ( List.map (\(m,i,r) -> modeButton model m i r)
+                    [ ("Notes", "assets/img/notes.svg", Notes)
+                    , ("Animations", "assets/img/anime.svg", Animations)
+                    , ("Camera", "assets/img/cam.svg", Camera)
+                    , ("Cource", "assets/img/cource.svg", Cource)
+                    , ("Settings", "assets/img/settings.svg", Settings)
+                    , ("Raw", "assets/img/raw.svg", Raw)
                     ]
-                , div [ class "mode" ]
-                    [ img [ src "assets/img/anime.svg" ] []
-                    , text "Animations"
-                    ]
-                , div [ class "mode" ]
-                    [ img [ src "assets/img/cam.svg" ] []
-                    , text "Camera"
-                    ]
-                , div [ class "mode" ]
-                    [ img [ src "assets/img/cource.svg" ] []
-                    , text "Course"
-                    ]
-                , div [ class "mode" ]
-                    [ img [ src "assets/img/settings.svg" ] []
-                    , text "Settings"
-                    ]
-                , div [ class "mode" ]
-                    [ img [ src "assets/img/raw.svg" ] []
-                    , text "Raw"
-                    ]
-                ]
+                )
             ]
         ]
     }
+
+
+modeButton : RootModel -> String -> String -> Route -> Html Msg
+modeButton rootModel modeStr imgStr route =
+    let
+        active = 
+            if rootModel.route == route then
+                "active"
+            else
+                ""
+    in
+    div [ class "mode", class active, onClick (ChangeRoute route) ]
+        [ img [ src imgStr ] []
+        , text modeStr
+        ]

@@ -24,6 +24,10 @@
     height: min-content;
 }
 
+.left-sidepanel .mode.active {
+    background-color: #858585;
+}
+
 .left-sidepanel .mode img {
     width: 100%;
 }

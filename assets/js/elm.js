@@ -10542,14 +10542,16 @@ var $elm$core$Basics$never = function (_v0) {
 	}
 };
 var $elm$browser$Browser$application = _Browser_application;
-var $author$project$Main$RootModel = F2(
-	function (key, url) {
-		return {key: key, url: url};
+var $author$project$Model$Raw = {$: 'Raw'};
+var $author$project$Raw$RawModel$initRawModel = {rawStringNotes: '', rawStringScore: ''};
+var $author$project$Model$initModel = F2(
+	function (url, key) {
+		return {key: key, rawModel: $author$project$Raw$RawModel$initRawModel, route: $author$project$Model$Raw, url: url};
 	});
 var $author$project$Main$init = F3(
 	function (_v0, url, key) {
 		return _Utils_Tuple2(
-			A2($author$project$Main$RootModel, key, url),
+			A2($author$project$Model$initModel, url, key),
 			$elm$core$Platform$Cmd$none);
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -10605,40 +10607,80 @@ var $elm$url$Url$toString = function (url) {
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		if (msg.$ === 'UrlRequested') {
-			var urlRequest = msg.a;
-			if (urlRequest.$ === 'Internal') {
-				var url = urlRequest.a;
+		switch (msg.$) {
+			case 'UrlRequested':
+				var urlRequest = msg.a;
+				if (urlRequest.$ === 'Internal') {
+					var url = urlRequest.a;
+					return _Utils_Tuple2(
+						model,
+						A2(
+							$elm$browser$Browser$Navigation$pushUrl,
+							model.key,
+							$elm$url$Url$toString(url)));
+				} else {
+					var href = urlRequest.a;
+					return _Utils_Tuple2(
+						model,
+						$elm$browser$Browser$Navigation$load(href));
+				}
+			case 'UrlChanged':
+				var url = msg.a;
 				return _Utils_Tuple2(
-					model,
-					A2(
-						$elm$browser$Browser$Navigation$pushUrl,
-						model.key,
-						$elm$url$Url$toString(url)));
-			} else {
-				var href = urlRequest.a;
+					_Utils_update(
+						model,
+						{url: url}),
+					$elm$core$Platform$Cmd$none);
+			default:
+				var route = msg.a;
 				return _Utils_Tuple2(
-					model,
-					$elm$browser$Browser$Navigation$load(href));
-			}
-		} else {
-			var url = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{url: url}),
-				$elm$core$Platform$Cmd$none);
+					_Utils_update(
+						model,
+						{route: route}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
+var $author$project$Model$Animations = {$: 'Animations'};
+var $author$project$Model$Camera = {$: 'Camera'};
+var $author$project$Model$Cource = {$: 'Cource'};
+var $author$project$Model$Notes = {$: 'Notes'};
+var $author$project$Model$Settings = {$: 'Settings'};
 var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$nav = _VirtualDom_node('nav');
-var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $author$project$Main$ChangeRoute = function (a) {
+	return {$: 'ChangeRoute', a: a};
+};
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
+var $author$project$Main$modeButton = F4(
+	function (rootModel, modeStr, imgStr, route) {
+		var active = _Utils_eq(rootModel.route, route) ? 'active' : '';
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('mode'),
+					$elm$html$Html$Attributes$class(active),
+					$elm$html$Html$Events$onClick(
+					$author$project$Main$ChangeRoute(route))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$src(imgStr)
+						]),
+					_List_Nil),
+					$elm$html$Html$text(modeStr)
+				]));
+	});
+var $elm$html$Html$nav = _VirtualDom_node('nav');
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
@@ -10700,111 +10742,23 @@ var $author$project$Main$view = function (model) {
 							[
 								$elm$html$Html$Attributes$class('left-sidepanel')
 							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$img,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$src('assets/img/notes.svg')
-											]),
-										_List_Nil),
-										$elm$html$Html$text('Notes')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$img,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$src('assets/img/anime.svg')
-											]),
-										_List_Nil),
-										$elm$html$Html$text('Animations')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$img,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$src('assets/img/cam.svg')
-											]),
-										_List_Nil),
-										$elm$html$Html$text('Camera')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$img,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$src('assets/img/cource.svg')
-											]),
-										_List_Nil),
-										$elm$html$Html$text('Course')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$img,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$src('assets/img/settings.svg')
-											]),
-										_List_Nil),
-										$elm$html$Html$text('Settings')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$img,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$src('assets/img/raw.svg')
-											]),
-										_List_Nil),
-										$elm$html$Html$text('Raw')
-									]))
-							]))
+						A2(
+							$elm$core$List$map,
+							function (_v0) {
+								var m = _v0.a;
+								var i = _v0.b;
+								var r = _v0.c;
+								return A4($author$project$Main$modeButton, model, m, i, r);
+							},
+							_List_fromArray(
+								[
+									_Utils_Tuple3('Notes', 'assets/img/notes.svg', $author$project$Model$Notes),
+									_Utils_Tuple3('Animations', 'assets/img/anime.svg', $author$project$Model$Animations),
+									_Utils_Tuple3('Camera', 'assets/img/cam.svg', $author$project$Model$Camera),
+									_Utils_Tuple3('Cource', 'assets/img/cource.svg', $author$project$Model$Cource),
+									_Utils_Tuple3('Settings', 'assets/img/settings.svg', $author$project$Model$Settings),
+									_Utils_Tuple3('Raw', 'assets/img/raw.svg', $author$project$Model$Raw)
+								])))
 					]))
 			]),
 		title: 'GCSSEditor'
@@ -10813,4 +10767,4 @@ var $author$project$Main$view = function (model) {
 var $author$project$Main$main = $elm$browser$Browser$application(
 	{init: $author$project$Main$init, onUrlChange: $author$project$Main$UrlChanged, onUrlRequest: $author$project$Main$UrlRequested, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Main.Msg","aliases":{"Url.Url":{"args":[],"type":"{ protocol : Url.Protocol, host : String.String, port_ : Maybe.Maybe Basics.Int, path : String.String, query : Maybe.Maybe String.String, fragment : Maybe.Maybe String.String }"}},"unions":{"Main.Msg":{"args":[],"tags":{"UrlRequested":["Browser.UrlRequest"],"UrlChanged":["Url.Url"]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"Maybe.Maybe":{"args":["a"],"tags":{"Just":["a"],"Nothing":[]}},"Url.Protocol":{"args":[],"tags":{"Http":[],"Https":[]}},"String.String":{"args":[],"tags":{"String":[]}},"Browser.UrlRequest":{"args":[],"tags":{"Internal":["Url.Url"],"External":["String.String"]}}}}})}});}(this));
+	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Main.Msg","aliases":{"Url.Url":{"args":[],"type":"{ protocol : Url.Protocol, host : String.String, port_ : Maybe.Maybe Basics.Int, path : String.String, query : Maybe.Maybe String.String, fragment : Maybe.Maybe String.String }"}},"unions":{"Main.Msg":{"args":[],"tags":{"UrlRequested":["Browser.UrlRequest"],"UrlChanged":["Url.Url"],"ChangeRoute":["Model.Route"]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"Maybe.Maybe":{"args":["a"],"tags":{"Just":["a"],"Nothing":[]}},"Url.Protocol":{"args":[],"tags":{"Http":[],"Https":[]}},"Model.Route":{"args":[],"tags":{"Notes":[],"Animations":[],"Camera":[],"Cource":[],"Settings":[],"Raw":[]}},"String.String":{"args":[],"tags":{"String":[]}},"Browser.UrlRequest":{"args":[],"tags":{"Internal":["Url.Url"],"External":["String.String"]}}}}})}});}(this));
