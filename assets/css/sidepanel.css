@@ -16,12 +16,14 @@
 .left-sidepanel .mode {
     height: 6rem;
     border-bottom: solid 2px #757575;
+    padding: 1rem;
 
     color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    height: min-content;
+}
 
-    font-weight: 500;
-    font-size: 1.2rem;
-
-    vertical-align: middle;
-    align: center;
+.left-sidepanel .mode img {
+    width: 100%;
 }

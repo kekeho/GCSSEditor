@@ -10710,6 +10710,14 @@ var $author$project$Main$view = function (model) {
 									]),
 								_List_fromArray(
 									[
+										A2(
+										$elm$html$Html$img,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$src('assets/img/notes.svg'),
+												$elm$html$Html$Attributes$class('gcsse-logo-img')
+											]),
+										_List_Nil),
 										$elm$html$Html$text('Notes')
 									])),
 								A2(
@@ -10720,7 +10728,15 @@ var $author$project$Main$view = function (model) {
 									]),
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Target Settings')
+										A2(
+										$elm$html$Html$img,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$src('assets/img/anime.svg'),
+												$elm$html$Html$Attributes$class('gcsse-logo-img')
+											]),
+										_List_Nil),
+										$elm$html$Html$text('Animations')
 									])),
 								A2(
 								$elm$html$Html$div,
@@ -10730,7 +10746,15 @@ var $author$project$Main$view = function (model) {
 									]),
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Animation Settings')
+										A2(
+										$elm$html$Html$img,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$src('assets/img/gcsse.svg'),
+												$elm$html$Html$Attributes$class('gcsse-logo-img')
+											]),
+										_List_Nil),
+										$elm$html$Html$text('Settings')
 									])),
 								A2(
 								$elm$html$Html$div,
@@ -10740,16 +10764,14 @@ var $author$project$Main$view = function (model) {
 									]),
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Other Settings')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('mode')
-									]),
-								_List_fromArray(
-									[
+										A2(
+										$elm$html$Html$img,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$src('assets/img/raw.svg'),
+												$elm$html$Html$Attributes$class('gcsse-logo-img')
+											]),
+										_List_Nil),
 										$elm$html$Html$text('Raw')
 									]))
 							]))

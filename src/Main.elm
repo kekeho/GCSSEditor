@@ -77,11 +77,22 @@ view model =
 
         , div [ class "app" ]
             [ div [ class "left-sidepanel" ]
-                [ div [ class "mode" ] [ text "Notes" ]
-                , div [ class "mode" ] [ text "Target Settings" ]
-                , div [ class "mode" ] [ text "Animation Settings" ]
-                , div [ class "mode" ] [ text "Other Settings" ]
-                , div [ class "mode" ] [ text "Raw" ]
+                [ div [ class "mode" ]
+                    [ img [ src "assets/img/notes.svg", class "gcsse-logo-img" ] []
+                    , text "Notes"
+                    ]
+                , div [ class "mode" ]
+                    [ img [ src "assets/img/anime.svg", class "gcsse-logo-img" ] []
+                    , text "Animations"
+                    ]
+                , div [ class "mode" ]
+                    [ img [ src "assets/img/gcsse.svg", class "gcsse-logo-img" ] []
+                    , text "Settings"
+                    ]
+                , div [ class "mode" ]
+                    [ img [ src "assets/img/raw.svg", class "gcsse-logo-img" ] []
+                    , text "Raw"
+                    ]
                 ]
             ]
         ]
