@@ -78,19 +78,27 @@ view model =
         , div [ class "app" ]
             [ div [ class "left-sidepanel" ]
                 [ div [ class "mode" ]
-                    [ img [ src "assets/img/notes.svg", class "gcsse-logo-img" ] []
+                    [ img [ src "assets/img/notes.svg" ] []
                     , text "Notes"
                     ]
                 , div [ class "mode" ]
-                    [ img [ src "assets/img/anime.svg", class "gcsse-logo-img" ] []
+                    [ img [ src "assets/img/anime.svg" ] []
                     , text "Animations"
                     ]
                 , div [ class "mode" ]
-                    [ img [ src "assets/img/gcsse.svg", class "gcsse-logo-img" ] []
+                    [ img [ src "assets/img/cam.svg" ] []
+                    , text "Camera"
+                    ]
+                , div [ class "mode" ]
+                    [ img [ src "assets/img/cource.svg" ] []
+                    , text "Course"
+                    ]
+                , div [ class "mode" ]
+                    [ img [ src "assets/img/settings.svg" ] []
                     , text "Settings"
                     ]
                 , div [ class "mode" ]
-                    [ img [ src "assets/img/raw.svg", class "gcsse-logo-img" ] []
+                    [ img [ src "assets/img/raw.svg" ] []
                     , text "Raw"
                     ]
                 ]

@@ -10714,8 +10714,7 @@ var $author$project$Main$view = function (model) {
 										$elm$html$Html$img,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$src('assets/img/notes.svg'),
-												$elm$html$Html$Attributes$class('gcsse-logo-img')
+												$elm$html$Html$Attributes$src('assets/img/notes.svg')
 											]),
 										_List_Nil),
 										$elm$html$Html$text('Notes')
@@ -10732,8 +10731,7 @@ var $author$project$Main$view = function (model) {
 										$elm$html$Html$img,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$src('assets/img/anime.svg'),
-												$elm$html$Html$Attributes$class('gcsse-logo-img')
+												$elm$html$Html$Attributes$src('assets/img/anime.svg')
 											]),
 										_List_Nil),
 										$elm$html$Html$text('Animations')
@@ -10750,8 +10748,41 @@ var $author$project$Main$view = function (model) {
 										$elm$html$Html$img,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$src('assets/img/gcsse.svg'),
-												$elm$html$Html$Attributes$class('gcsse-logo-img')
+												$elm$html$Html$Attributes$src('assets/img/cam.svg')
+											]),
+										_List_Nil),
+										$elm$html$Html$text('Camera')
+									])),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mode')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$img,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$src('assets/img/cource.svg')
+											]),
+										_List_Nil),
+										$elm$html$Html$text('Course')
+									])),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('mode')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$img,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$src('assets/img/settings.svg')
 											]),
 										_List_Nil),
 										$elm$html$Html$text('Settings')
@@ -10768,8 +10799,7 @@ var $author$project$Main$view = function (model) {
 										$elm$html$Html$img,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$src('assets/img/raw.svg'),
-												$elm$html$Html$Attributes$class('gcsse-logo-img')
+												$elm$html$Html$Attributes$src('assets/img/raw.svg')
 											]),
 										_List_Nil),
 										$elm$html$Html$text('Raw')
